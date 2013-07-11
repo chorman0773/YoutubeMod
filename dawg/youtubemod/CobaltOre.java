@@ -1,25 +1,25 @@
 package dawg.youtubemod;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockOre;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class CobaltBlock extends Block {
+public class CobaltOre extends BlockOre{
 
-	public CobaltBlock(int par1, Material par2Material) {
-		super(par1, par2Material);
+	public CobaltOre(int par1) {
+		super(par1);
 		
-		this.setHardness(3.0F);
+		this.setHardness(3.0F); // Diamond Hardness
 		this.setStepSound(Block.soundStoneFootstep);
-		this.setUnlocalizedName("cobaltBlock");
+		this.setUnlocalizedName("cobaltOre");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@Override
 	public void registerIcons(IconRegister reg)
 	{
-		this.blockIcon = reg.registerIcon("youtubemod:cobalt_block");
+		this.blockIcon = reg.registerIcon("youtubemod:cobalt_ore");
 	}
-
+	
 }
