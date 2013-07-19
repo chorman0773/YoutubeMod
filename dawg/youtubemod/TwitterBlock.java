@@ -1,5 +1,12 @@
 package dawg.youtubemod;
 
+import java.util.List;
+
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
+import twitter4j.Status;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
@@ -28,17 +35,12 @@ public class TwitterBlock extends BlockContainer{
     }
     
     // Event fires when player right clicks on the block.
-    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
-    {
-    	if(par1World.isRemote)
-    	{
-    		return true;
-    	}
-    	else
-    	{
-    		Utilities.SendChat(par5EntityPlayer, "Tweet, Tweet!!");
-    		return true;
-    	}
+    public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    {    	
+	    	par5EntityPlayer.openGui(YoutubeMod.instance, 0, par1World, x, y, z);
+
+    		
+    	return true;
     }
     
     public Icon getIcon(int par1, int par2)
@@ -55,8 +57,7 @@ public class TwitterBlock extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TwitterTileEntity();
 	}
 
 }
